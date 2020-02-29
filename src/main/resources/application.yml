@@ -1,0 +1,42 @@
+server:
+  port: 80
+  servlet:
+    context-path: /redis
+
+spring:
+  redis:
+    host: 192.168.200.4
+    port: 6379
+    database: 1
+    timeout: 10000
+    password: taiji@123
+  cache:
+    type: redis
+    redis:
+      time-to-live: 1m
+  datasource:
+    url: jdbc:postgresql://192.168.200.4:5432/epidemic
+    username: epidemic
+    password: 1qaz@WSX
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect=org:
+          hibernate:
+            dialect: PostgreSQLDialect
+            hbm2ddl:
+              auto: update
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # Âß¼­É¾³ýÅäÖÃ
+    db-config:
+      # É¾³ýÇ°
+      logic-not-delete-value: 1
+      # É¾³ýºó
+      logic-delete-value: 0
